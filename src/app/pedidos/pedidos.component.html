@@ -1,0 +1,24 @@
+<div>
+    <div class="page-title">
+        <h6 class="mb-0">Listagem de Pedidos</h6>
+    </div>
+    <div style="padding-top: 1%; padding-left: 0.5%;">
+        <button class="btn btn-primary btn-sm" (click)="openModalCadastrarPedido()">Cadastrar Pedido</button>
+        <table class="table table-striped table-hover" style="width: auto;">
+            <thead>
+              <tr>
+                <th>Número do Pedido</th>
+                <th>Cliente</th>
+                <th>Situação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of pedidos">
+                <td>{{ data.nroPedido }}</td>
+                <td>{{ data.cliente.nome }}</td>
+                <td>{{ data.situacao }}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+  </div>

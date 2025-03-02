@@ -1,0 +1,20 @@
+<div class="modal-header">
+    <h5 class="modal-title">Cadastrar Produto</h5>
+    <button type="button" class="btn-close" (click)="modal.close()"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div>
+        <label class="form-label">Nome</label>
+        <input type="text" name="nome" [(ngModel)]="nome" class="form-control" required>
+      </div>
+      <div>
+        <label class="form-label">Preço</label>
+        <input type="text" name="preco" [(ngModel)]="preco" class="form-control" required>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="salvar()">Salvar</button>
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Fechar</button>
+  </div>

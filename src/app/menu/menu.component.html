@@ -1,0 +1,21 @@
+<header class="d-flex align-items-center">
+    <h5 class="mb-0">Gerenciador de Pedidos</h5>
+    <span class="d-flex ms-4">
+        <div ngbNav #nav="ngbNav" [activeId]="active" class="nav nav-pills flex-row">
+            <ng-container ngbNavItem="clientes">
+                <button ngbNavLink [routerLink]="['/clientes']" routerLinkActive="active">Clientes</button>
+            </ng-container>
+            <ng-container ngbNavItem="produtos">
+                <button ngbNavLink [routerLink]="['/produtos']" routerLinkActive="active">Produtos</button>
+            </ng-container>
+            <ng-container ngbNavItem="pedidos">
+                <button ngbNavLink [routerLink]="['/pedidos']" routerLinkActive="active">Pedidos</button>
+            </ng-container>
+            <ng-container ngbNavItem="relatorios">
+                <button ngbNavLink [routerLink]="['/relatorios']" routerLinkActive="active">Relatórios</button>
+            </ng-container>
+        </div>
+
+        <div [ngbNavOutlet]="nav" class="ms-4"></div>
+    </span>
+</header>

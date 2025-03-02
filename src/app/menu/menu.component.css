@@ -1,0 +1,41 @@
+.nav {
+    background-color: #007bff;
+    color: white;
+}
+
+.nav :hover {
+    background-color: white;
+    color: #007bff;
+}
+
+.navLink {
+    background-color: #007bff;
+    color: white;
+    border-radius: 0%;
+}
+
+.navLink :hover {
+    background-color: white;
+    color: #007bff;
+    border-radius: 0%;
+}
+
+.nav-pills .nav-link.active{
+    background-color: white;
+    color: #007bff;
+}
+
+h5 {
+    color: white;
+    text-align: left;
+    width: 20%;
+    padding-left: 0.2%;
+}
+
+header {
+    background-color: #007bff;
+}
+
+button {
+    color: white;
+}

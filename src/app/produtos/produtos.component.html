@@ -1,0 +1,22 @@
+<div>
+    <div class="page-title">
+        <h6 class="mb-0">Listagem de Produtos</h6>
+    </div>
+    <div style="padding-top: 1%; padding-left: 0.5%;">
+        <button class="btn btn-primary btn-sm" (click)="openModalCadastrarProduto()">Cadastrar Produto</button>
+        <table class="table table-striped table-hover" style="width: auto;">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Preço</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of produtos">
+                  <td>{{ data.nome }}</td>
+                  <td>{{ data.preco }}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+  </div>
