@@ -47,3 +47,11 @@ tr {
     background-color: #007bff;
     padding-bottom: 0.2%;
 }
+
+#buttonExcluir, #buttonEditar, #buttonFinalizar, #buttonCancelar {
+    border: none; 
+    border-color: none;
+    background-color: transparent;
+    color: #007bff;
+    margin-left: 5px;
+}

@@ -15,18 +15,39 @@ export class PedidosService {
 
   constructor(private http: HttpClient) {
     this.urlPedidos = 'http://localhost:8080/pedidos/';
-    this.urlPedidosItens = 'http://localhost:8080/pedidositens/'
+    this.urlPedidosItens = 'http://localhost:8080/pedidosItens/'
   }
 
   public listPedidos(): Observable<Pedidos[]> {
     return this.http.get<Pedidos[]>(this.urlPedidos + 'listPedidos');
   }
 
-  public listPedidosItens(): Observable<PedidosItens[]> {
-    return this.http.get<PedidosItens[]>(this.urlPedidosItens + 'listPedidosItens');
+  public listPedidosItens(pedido: Pedidos): Observable<PedidosItens[]> {
+    let params = new HttpParams();
+    params = params.set('pedidoId', pedido.id);
+    return this.http.get<PedidosItens[]>(this.urlPedidosItens + 'listPedidosItens', { params });
   }
 
-  public save(pedidosItens: PedidosItens[]): Observable<any> {
-    return this.http.post(this.urlPedidosItens, pedidosItens);
+  public save(pedido: Pedidos): Observable<any> {
+    return this.http.post(this.urlPedidos, pedido);
+  }
+
+  public finalizarPedido(pedido: Pedidos): Observable<any> {
+    let params = new HttpParams();
+    params = params.set('pedidoId', pedido.id);
+    console.log(params);
+    return this.http.put(this.urlPedidos + 'finalizarPedido', {}, { params });
+  }
+
+  public cancelarPedido(pedido: Pedidos): Observable<any> {
+    let params = new HttpParams();
+    params = params.set('pedidoId', pedido.id);
+    return this.http.put(this.urlPedidos + 'cancelarPedido', {}, { params });
+  }
+
+  public excluirPedido(pedido: Pedidos): Observable<any> {
+    let params = new HttpParams();
+    params = params.set('pedidoId', pedido.id);
+    return this.http.put(this.urlPedidos + "excluirPedido", {}, { params });
   }
 }

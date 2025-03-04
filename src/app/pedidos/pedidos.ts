@@ -1,13 +1,16 @@
 import { Clientes } from "../clientes/clientes";
+import { PedidosItens } from "./pedidositens";
 
 export class Pedidos {
-    nroPedido: number;
+    id!: number;
+    nroPedido!: number;
     cliente: Clientes;
     situacao: string;
+    pedidosItens: PedidosItens[]; 
 
-    constructor(nroPedido:number, cliente: Clientes, situacao: string) {
-        this.nroPedido = nroPedido;
+    constructor(cliente: Clientes, situacao: string, pedidosItens: PedidosItens[]) {
         this.cliente = cliente;
         this.situacao = situacao;
+        this.pedidosItens = pedidosItens;
     }
 }

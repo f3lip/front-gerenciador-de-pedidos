@@ -22,4 +22,10 @@ export class ProdutosService {
   public save(produto: Produtos): Observable<any> {
     return this.http.post(this.url, produto);
   }
+
+  public excluirProduto(produto: Produtos): Observable<any> {
+    let params = new HttpParams();
+    params = params.set('produtoId', produto.id);
+    return this.http.put(this.url + "excluirProduto", {}, { params });
+  }
 }

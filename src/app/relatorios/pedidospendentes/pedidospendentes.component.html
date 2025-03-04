@@ -1,0 +1,17 @@
+<table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Número do Pedido</th>
+        <th>Cliente</th>
+        <th>Situação</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of pedidos">
+        <td>{{ data.nroPedido }}</td>
+        <td>{{ data.cliente.nome }}</td>
+        <td>{{ data.situacao }}</td>
+      </tr>
+    </tbody>
+  </table>

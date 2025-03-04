@@ -1,4 +1,5 @@
 export class Clientes {
+    id!: number;
     nome: string;
 
     constructor(nome: string) {

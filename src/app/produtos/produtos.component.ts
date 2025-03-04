@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { Produtos } from './produtos';
 import { ProdutosService } from './produtos.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-produtos',
@@ -15,7 +16,7 @@ import { ProdutosService } from './produtos.service';
 export class ProdutosComponent {
   produtos: Produtos[] = [];
 
-  constructor(private modalService: NgbModal, private produtosService: ProdutosService) {}
+  constructor(private modalService: NgbModal, private produtosService: ProdutosService, private toastr: ToastrService) {}
 
   openModalCadastrarProduto() {
     this.modalService.open(CadastroComponent);
@@ -24,6 +25,23 @@ export class ProdutosComponent {
   ngOnInit(): void {
     this.produtosService.listProdutos().subscribe(data => {
       this.produtos = data;
+    });
+  }
+
+  editarProduto(produto: any) {
+      const modalRef = this.modalService.open(CadastroComponent);
+      modalRef.componentInstance.produto = produto;
+      modalRef.componentInstance.isEditar = true;
+    }
+  
+  excluirProduto(event: any) {
+    this.produtosService.excluirProduto(event).subscribe({
+      next: () => {
+        this.toastr.success('Produto excluído com sucesso!');
+      },
+      error: (error) => {
+        this.toastr.error('Erro ao enviar dados', error);
+      }
     });
   }
 }

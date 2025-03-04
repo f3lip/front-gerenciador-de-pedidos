@@ -1,1 +1,20 @@
-<p>relatorios works!</p>
+<div>
+    <div class="page-title">
+        <h6 class="mb-0">Relatórios</h6>
+    </div>
+    <hr style="border: none; height: 0; color: transparent;">
+    <div class="button-container" style="align-items: center;">
+        <button class="btn btn-primary btn-sm" (click)="carregarResumoVendas()">Resumo das Vendas</button>
+        <button class="btn btn-primary btn-sm" (click)="carregarPedidosPendentes()">Pedidos Pendentes</button>
+        <button class="btn btn-primary btn-sm" (click)="carregarClientesMaisAtivos()">Clientes Mais Ativos</button>
+    </div>
+    <div *ngIf="isClientesMaisAtivos">
+        <app-clientesmaisativos></app-clientesmaisativos>
+    </div>
+    <div *ngIf="isPedidosPendentes">
+        <app-pedidospendentes></app-pedidospendentes>
+    </div>
+    <div *ngIf="isResumoVendas">
+        <app-resumovendas></app-resumovendas>
+    </div>
+  </div>

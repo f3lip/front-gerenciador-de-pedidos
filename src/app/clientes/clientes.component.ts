@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { ClientesService } from './clientes.service';
 import { Clientes } from './clientes';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-clientes',
@@ -15,7 +16,7 @@ import { Clientes } from './clientes';
 export class ClientesComponent implements OnInit {
   clientes: Clientes[] = [];
 
-  constructor(private modalService: NgbModal, private clientesService: ClientesService) {}
+  constructor(private modalService: NgbModal, private clientesService: ClientesService, private toastr: ToastrService) {}
 
   openModalCadastrarCliente() {
     this.modalService.open(CadastroComponent);
@@ -24,6 +25,23 @@ export class ClientesComponent implements OnInit {
   ngOnInit(): void {
     this.clientesService.listClientes().subscribe(data => {
       this.clientes = data;
+    });
+  }
+
+  editarCliente(cliente: any) {
+    const modalRef = this.modalService.open(CadastroComponent);
+    modalRef.componentInstance.cliente = cliente;
+    modalRef.componentInstance.isEditar = true;
+  }
+
+  excluirCliente(event: any) {
+    this.clientesService.excluirCliente(event).subscribe({
+      next: () => {
+        this.toastr.success('Cliente excluído com sucesso!');
+      },
+      error: (error) => {
+        this.toastr.error('Erro ao enviar dados', error);
+      }
     });
   }
 }

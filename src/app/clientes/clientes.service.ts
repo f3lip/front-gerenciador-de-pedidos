@@ -22,4 +22,10 @@ export class ClientesService {
   public save(cliente: Clientes): Observable<any> {
     return this.http.post(this.url, cliente);
   }
+
+    public excluirCliente(cliente: Clientes): Observable<any> {
+      let params = new HttpParams();
+      params = params.set('clienteId', cliente.id);
+      return this.http.put(this.url + "excluirCliente", {}, { params });
+    }
 }

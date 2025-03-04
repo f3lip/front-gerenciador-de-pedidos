@@ -4,8 +4,48 @@
   </div>
   <div class="modal-body">
     <form>
-        <label class="form-label">Nome</label>
-        <input type="text" [(ngModel)]="nome" class="form-control" required>
+      <div class="form-group">
+        <label class="form-label required">Cliente</label>
+        <ng-select [items]="optionsClientes"
+           bindLabel="nome"
+           [(ngModel)]="clienteSelecionado"
+           name="cliente"
+           id="selectCliente"
+           required>
+        </ng-select>
+      </div>
+      <div class="form-group">
+        <label class="form-label required">Produto</label>
+        <ng-select [items]="optionsProdutos"
+           bindLabel="nome"
+           [(ngModel)]="produtoSelecionado"
+           name="produto"
+           id="selectProduto"
+           (ngModelChange)="onOptionChange($event)">
+        </ng-select>
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th style="text-align: start;">Produto</th>
+              <th>Preço</th>
+              <th>Quantidade</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of pedidosItens">
+              <td>{{ data.produto.nome }}</td>
+              <td>{{ data.produto.preco }}</td>
+              <td><input type="number" name="quantidade" min="1" max="99" step="1" [(ngModel)]="data.quantidade" mask="00"/></td>
+              <td style="text-align: end;">
+                <button id="buttonExcluir" (click)="excluirProduto($event)">
+                  <i class="bi bi-trash"></i>
+                </button>
+            </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </form>
   </div>
   <div class="modal-footer">
