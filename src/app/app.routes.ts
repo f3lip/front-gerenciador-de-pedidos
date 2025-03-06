@@ -5,6 +5,7 @@ import { PedidosComponent } from './pedidos/pedidos.component';
 import { RelatoriosComponent } from './relatorios/relatorios.component';
 
 export const routes: Routes = [
+    {path: '', redirectTo: '/pedidos', pathMatch: 'full'},
     {path: 'clientes', component: ClientesComponent},
     {path: 'produtos', component: ProdutosComponent},
     {path: 'pedidos', component: PedidosComponent},

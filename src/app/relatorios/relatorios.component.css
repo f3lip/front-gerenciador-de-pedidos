@@ -1,5 +1,14 @@
 button {
     margin-left: 5px;
+    background-color: #007bff;
+    color: white;
+    border-color: transparent;
+}
+
+button:hover {
+    background-color: white;
+    color: #007bff;
+    border-color: transparent;
 }
 
 h6{
@@ -11,8 +20,7 @@ h6{
 
 .button-container {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-    align-content: center;
-  }
+}
   

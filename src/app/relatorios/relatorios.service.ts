@@ -22,4 +22,8 @@ export class RelatoriosService {
   public pedidosPendentes(): Observable<Pedidos[]> {
     return this.http.get<Pedidos[]>(this.url + 'pedidosPendentes');
   }
+
+  public clientesMaisAtivos(): Observable<any[]> {
+    return this.http.get<any[]>(this.url + 'clientesMaisAtivos');
+  }
 }
